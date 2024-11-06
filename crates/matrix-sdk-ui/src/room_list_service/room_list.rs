@@ -121,7 +121,7 @@ impl RoomList {
     }
 
     /// Get a stream of rooms.
-    fn entries(&self) -> (Vector<Room>, impl Stream<Item = Vec<VectorDiff<Room>>> + '_) {
+    pub fn entries(&self) -> (Vector<Room>, impl Stream<Item = Vec<VectorDiff<Room>>> + '_) {
         let (rooms, stream) = self.client.rooms_stream();
 
         let map_room = |room| Room::new(room, &self.sliding_sync);
